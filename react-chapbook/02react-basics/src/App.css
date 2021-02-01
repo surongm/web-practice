@@ -1,0 +1,16 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.demo-box{
+  width: 500px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.content{
+  margin-bottom: 20px;
+}

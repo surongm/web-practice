@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>点赞功能——第五步</title>
+</head>
+
+<body>
+    <div class='wrapper'>
+
+    </div>
+
+    <script>
+        // 使用setState操作dom  还未实现
+
+        // 定义一个string => dom节点的方法
+        let createDOMFromString = (domstring) => {
+            let div = document.createElement('div')
+            div.innerHTML = domstring
+            return div
+        }
+
+        // likebutton类
+        class LikeButton {
+            constructor() {
+                this.state = {
+                    isLiked: false
+                }
+            }
+
+            setState(state) {
+                this.state = state
+                this.el = this.render()
+            }
+
+            changLikeText() {
+                this.setState({
+                    isLiked: !this.state.isLiked
+                })
+            }
+
+            // 有一个render方法，返回一段字符串
+            render() {
+                this.el = createDOMFromString(
+                    `
+                    <button class='like-btn'>
+                        <span class="like-text">${this.state.isLiked ? '取消' : '点赞'}</span>
+                        <span>👍</span>
+                    </button>
+                    `
+                )
+                // this.el.addEventListener('click', this.changLikeText.bind(this), false)
+                this.el.addEventListener('click', () => this.changLikeText(), false)
+                return this.el
+            }
+        }
+
+        // 把类里面的代码插入页面中
+        let wrapper = document.querySelector('.wrapper')
+        let likeButton1 = new LikeButton()
+        // wrapper.innerHTML = likeButton1.render()  //dom元素添加 不可以用这个方法
+        wrapper.appendChild(likeButton1.render())
+
+        // let likeButton2 = new LikeButton()
+        // wrapper.append(likeButton2.render())
+
+
+    </script>
+</body>
+
+</html>

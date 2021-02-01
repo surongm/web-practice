@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>点赞功能——第二步</title>
+</head>
+
+<body>
+    <div class='wrapper'>
+
+    </div>
+
+    <script>
+        // 基本页面
+
+        // likebutton类
+        class LikeButton {
+            // 有一个render方法，返回一段字符串
+            render() {
+                return (
+                    `
+                    <button class='like-btn'>
+                        <span class="like-text">点赞</span>
+                        <span>👍</span>
+                    </button>
+                  `
+                )
+            }
+        }
+
+        // 把类里面的代码插入页面中
+        let wrapper = document.querySelector('.wrapper')
+        let likeButton1 = new LikeButton()
+        wrapper.innerHTML = likeButton1.render()
+
+        // let likeButton2 = new LikeButton()
+        // wrapper.innerHTML = likeButton2.render()
+
+
+    </script>
+</body>
+
+</html>

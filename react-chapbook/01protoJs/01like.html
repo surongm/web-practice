@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>点赞功能——第一步</title>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <button class='like-btn'>
+            <span class="like-text">点赞</span>
+            <span>👍</span>
+        </button>
+    </div>
+
+
+    <script>
+        const button = document.querySelector('.like-btn')
+        const buttonText = button.querySelector('.like-text')
+
+        let isLike = false
+
+        // 监听点击事件
+        // button.addEventListener('click', () => {
+        //     isLike = !isLike
+        //     if (isLike) {
+        //         buttonText.innerHTML = '取消'
+        //     } else {
+        //         buttonText.innerHTML = '点赞'
+        //     }
+        // }, false)
+
+        // 直接绑定事件
+        button.onclick = () => {
+            isLike = !isLike
+            if (isLike) {
+                buttonText.innerHTML = '取消'
+            } else {
+                buttonText.innerHTML = '点赞'
+            }
+        }
+
+    </script>
+</body>
+
+</html>

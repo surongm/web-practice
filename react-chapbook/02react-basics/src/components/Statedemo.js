@@ -42,6 +42,24 @@ export default class Statedemo extends Component {
     //     console.log(this.state.count)
     // }
 
+    // // 输出 0 0 0   3 3 3  6 6 6 
+    // handleClicksetState = () => {
+    //     this.setState((prevState) => {
+    //         return { count: prevState.count + 1 }
+    //     })
+    //     console.log(this.state.count)
+
+    //     this.setState((prevState) => {
+    //         return { count: prevState.count + 1 }
+    //     })
+    //     console.log(this.state.count)
+
+    //     this.setState((prevState) => {
+    //         return { count: prevState.count + 1 }
+    //     })
+    //     console.log(this.state.count)
+    // }
+
     // 参数是函数,可接受两个参数
     // 输出 0 0 0   3 3 3  6 6 6 
     // handleClicksetState = () => {

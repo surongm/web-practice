@@ -7,7 +7,7 @@
 .demo-box{
   width: 500px;
   padding: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
   border: 1px solid #ccc;
 }
 

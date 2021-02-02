@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: sans-serif
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.comment-app {
+  width: 540px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* content */
+
+.comment-content {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #f1f1f1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.comment-field {
+  width: 80%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #e6e6e6;
+  outline: none;
+}
+
+.comment-field-name {
+  display: inline-block;
+  width: 20%;
+}
+
+.comment-input,.comment-textarea {
+  margin-bottom: 15px;
+}
+
+.comment-textarea-name {
+  vertical-align: top;
+}
+
+.comment-textarea-field {
+  height: 110px;
+  resize: none;
+}
+
+.comment-btn {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content:flex-end
 }
 
-.App-link {
-  color: #61dafb;
+.comment-btn-submit{
+  width: 80px;
+  color: #fff;
+  background-color: #00a3cf;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* comment-list */
+
+.comment-list{
+  padding-top: 10px;
+}
+
+.list{
+  display: flex;
+  min-height: 50px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.list-name-label {
+  flex-shrink: 0;
+}
+
+.list-name{
+  color: #00a3cf;
+  font-style: italic;
 }

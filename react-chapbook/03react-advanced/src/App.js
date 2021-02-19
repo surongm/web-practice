@@ -1,10 +1,20 @@
 import './App.css';
-import Parent from './components/Parent'
+import {
+  UnmountCompParent,
+  ClockMountParent,
+  Refdemo,
+  HtmlDemo,
+  PropTypesDemoParent
+} from './components'
 
 function App() {
   return (
     <div className="App">
-      <Parent />
+      <UnmountCompParent />
+      <ClockMountParent />
+      <Refdemo />
+      <HtmlDemo />
+      <PropTypesDemoParent />
     </div>
   );
 }

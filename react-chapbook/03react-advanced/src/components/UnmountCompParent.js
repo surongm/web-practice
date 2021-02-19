@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UnmountComp from './UnmountComp'
 
-export default class Parent extends Component {
+export default class UnmountCompParent extends Component {
     constructor() {
         super()
         this.state = {
@@ -17,7 +17,10 @@ export default class Parent extends Component {
 
     render() {
         return (
-            <div>
+            <div className='demo-box'>
+                <div className='content'>
+                    <h1>UnmountCompParent</h1>
+                </div>
                 {/* <UnmountComp /> */}
                 {
                     this.state.isShowComp ? <UnmountComp /> : null

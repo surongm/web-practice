@@ -7,27 +7,30 @@ const CommentList = (props) => {
         onDeleteComment(createtime)
     }
 
-    useEffect(() => {
-        if (comments.length) {
-            for (let comment of comments) {
-                let { textareaText } = comment
-                if (textareaText.indexOf('`') >= 0) {
-                    textareaText = showCodeHtml(textareaText)
-                    console.log(textareaText)
-                }
-            }
-        }
-    }, [comments.length])
+    // useEffect(() => {
+    //     if (comments.length) {
+    //         for (let comment of comments) {
+    //             let { textareaText } = comment
+    //             if (textareaText.indexOf('`') >= 0) {
+    //                 textareaText = showCodeHtml(textareaText)
+    //                 console.log(textareaText)
+    //             }
+    //         }
+    //     }
+    // }, [comments.length])
 
     const showCodeHtml = (textareaText) => {
         let indexStart = textareaText.indexOf('`')
         let indexEnd = textareaText.slice(indexStart + 1).indexOf('`')
         let codeString = textareaText.substr(indexStart + 1, indexEnd - 1)
-        let codeHtml = `<string>${codeString}</string>`
+        let codeHtml = `<code>${codeString}</code>`
         let EndText = textareaText.slice(indexStart + 1 + indexEnd + 1)
-        let result = '"' + textareaText.slice(0, indexStart) + `${codeHtml}${EndText}` + '"'
+        let result = textareaText.slice(0, indexStart) + `${codeHtml}${EndText}`
         return result
-        // let AllResult = EndText.indexOf('`') >= 0 ? showCodeHtml(EndText) : result
+
+        // 未实现
+        // let AllResult = EndText.indexOf('`') >= 0 ? (result + showCodeHtml(EndText)) : result
+        // console.log(AllResult)
         // return AllResult
     }
 
@@ -46,7 +49,7 @@ const CommentList = (props) => {
                             {/* <div className='list-comment'>
                                 {comment.textareaText}
                             </div> */}
-                            <div className='list-comment' dangerouslySetInnerHTML={{ __html: comment.textareaText.toString() }} />
+                            <div className='list-comment' dangerouslySetInnerHTML={{ __html: showCodeHtml(comment.textareaText) }} />
                             <span className='list-createtime'>{comment.timeString}</span>
                             <span className='list-delete' onClick={() => handleClickDelete(comment.createtime)} >删除</span>
                         </div>

@@ -85,6 +85,7 @@ body{
 
 .comment{
   display: flex;
+  position: relative;
   border-bottom: 1px solid #f1f1f1f1;
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -104,4 +105,33 @@ body{
 .comment p {
   margin: 0;
   /* text-indent: 2em; */
+}
+
+.comment-createdtime,.comment-delete{
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+}
+
+.comment-createdtime{
+  padding-right: 5px;
+  bottom: 0;
+  padding: 5px;
+}
+
+.comment-delete{
+  top: 0;
+  /* 设置为透明 */
+  color: transparent;
+  cursor: pointer;
+}
+
+.comment:hover .comment-delete{
+  color: #00a3cf
+}
+
+code{
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  padding: 0px 2px;
 }

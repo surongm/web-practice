@@ -1,19 +1,17 @@
 
 // 3、创建一个createStore 专门生成state和dispatch
 // 监听数据变化
-function createStore(reducer) {
-  let state = null
+function createStore(state, stateChanger) {
   const listeners = []
   const subscribe = (listener) => listeners.push(listener)
 
   const getState = () => state
   const dispatch = (action) => {
+    // stateChanger(state, action)
     // 覆盖原来对象
-    state = reducer(state, action)
+    state = stateChanger(state, action)
     listeners.forEach((listener) => listener())
   }
-  // 初始化 state
-  dispatch({})
 
   return { getState, dispatch, subscribe }
 }
@@ -47,6 +45,19 @@ function renderContent(newContent, oldContent = {}) {
   contentDOM.style.color = newContent.color
 }
 
+// 1、数据
+const appState = {
+  title: {
+    text: 'React.js 小书',
+    color: 'red'
+  },
+  content: {
+    text: 'React.js 小书内容',
+    color: 'blue'
+  }
+}
+
+
 // 2、需要一个函数dispatch——专门负责数据的修改
 // function stateChanger(state, action) {
 //   switch (action.type) {
@@ -62,19 +73,7 @@ function renderContent(newContent, oldContent = {}) {
 // }
 
 // 2、需要一个函数dispatch——专门负责数据的修改
-function reducer(state, action) {
-  if (!state) {
-    return {
-      title: {
-        text: 'React.js 小书',
-        color: 'red'
-      },
-      content: {
-        text: 'React.js 小书内容',
-        color: 'blue'
-      }
-    }
-  }
+function stateChanger(state, action) {
   switch (action.type) {
     case 'UPDATE_TITLE_TEXT':
       // 构建新对象并且返回
@@ -100,7 +99,7 @@ function reducer(state, action) {
   }
 }
 
-const store = createStore(reducer)
+const store = createStore(appState, stateChanger)
 // store.subscribe(() => renderApp(store.getState()))
 
 // 缓存旧的state
@@ -127,28 +126,3 @@ store.dispatch({
   color: 'blue'
 })
 // 后面不管如何 store.dispatch，都不需要重新调用renderApp
-
-
-// 可创建不同的store
-function themeReducer(state, action) {
-  if (!state) {
-    return {
-      themeName: 'Red Theme',
-      themeColor: 'red'
-    }
-  }
-  switch (action.type) {
-    case 'UPDATE_THEME_NAME':
-      return {
-        ...state,
-        themeName: action.themeName
-      }
-    case 'UPDATE_THEME_COLOR':
-      return {
-        ...state,
-        themeColor: action.themeColor
-      }
-    default:
-      return state
-  }
-}

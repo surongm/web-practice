@@ -6,50 +6,40 @@ export default class CommentInput extends Component {
     // 1、static开头的类属性
 
     static propTypes = {
-        onSubmit: PropTypes.func
+        username: PropTypes.string,
+        onSubmit: PropTypes.func,
+        onUserNameInputBlur: PropTypes.func
+    }
+
+    static defaultProps = {
+        username: ''
     }
 
     // 2、构造函数
 
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
-            username: '',
+            username: props.username,
             content: ''
         }
     }
 
     // 3、生命周期函数
 
-    componentWillMount() {
-        this._loadUsername()
-    }
-
     componentDidMount() {
         // 焦点自动聚焦在input
         this.textarea.focus()
-    }
-
-    // 4、以 _开头的私有方法
-
-    // 加载username的方法
-    _loadUsername = () => {
-        const username = localStorage.getItem('username')
-        if (username) {
-            this.setState({ username })
-        }
-    }
-
-    _saveUsername = (username) => {
-        // 把username 存储到localStorage
-        localStorage.setItem('username', username)
     }
 
     // 5、以handle开头的监听方法
 
     // input失去焦点触发
     handleUsernameBlur = (e) => {
-        this._saveUsername(e.target.value)
+        const { onUserNameInputBlur } = this.props
+        if (onUserNameInputBlur) {
+            onUserNameInputBlur(e.target.value)
+        }
     }
 
     // input 受控
@@ -68,9 +58,10 @@ export default class CommentInput extends Component {
 
     // 点击提交按钮
     handleSubmit = () => {
-        if (this.props.onSubmit) {
+        const { onSubmit } = this.props
+        if (onSubmit) {
             const { username, content } = this.state
-            this.props.onSubmit({
+            onSubmit({
                 username,
                 content,
                 createdTime: +new Date()

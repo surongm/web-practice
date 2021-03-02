@@ -1,5 +1,5 @@
 import './App.css';
-import CommentApp from './components/CommentApp'
+import CommentApp from './containers/CommentApp'
 
 function App() {
   return (

@@ -3,7 +3,10 @@ export default {
 
     plugins: [
         ['umi-plugin-react', {
+            // 引入antd
             antd: true,
+            // 引入dva
+            dva: true,
         }]
     ],
 
@@ -12,29 +15,33 @@ export default {
         path: '/',
         component: '../layouts',
         routes: [{
-                path: '/',
-                component: './HelloWorld'
+            path: '/',
+            component: './HelloWorld'
+        },
+        {
+            path: 'helloworld',
+            component: './HelloWorld'
+        },
+        {
+            path: '/dashboard',
+            routes: [{
+                path: '/dashboard/analysis',
+                component: 'Dashboard/Analysis'
             },
             {
-                path: 'helloworld',
-                component: './HelloWorld'
+                path: '/dashboard/monitor',
+                component: 'Dashboard/Monitor'
             },
             {
-                path: '/dashboard',
-                routes: [{
-                        path: '/dashboard/analysis',
-                        component: 'Dashboard/Analysis'
-                    },
-                    {
-                        path: '/dashboard/monitor',
-                        component: 'Dashboard/Monitor'
-                    },
-                    {
-                        path: '/dashboard/workplace',
-                        component: 'Dashboard/Workplace'
-                    }
-                ]
+                path: '/dashboard/workplace',
+                component: 'Dashboard/Workplace'
             }
+            ]
+        },
+        {
+            path: '/pazzlecards',
+            component: 'puzzleCards/'
+        }
         ]
     }]
 };

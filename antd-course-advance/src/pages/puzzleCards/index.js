@@ -1,57 +1,53 @@
 import React, { Component } from 'react'
 import { Card, Button } from "antd";
+import { connect } from 'dva'
 
-export default class PuzzleCards extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            cardList: [
-                {
-                    id: 1,
-                    setup: 'Did you hear about the two silk worms in a race?',
-                    punchline: 'It ended in a tie',
-                },
-                {
-                    id: 2,
-                    setup: 'What happens to a frog\'s car when it breaks down?',
-                    punchline: 'It gets toad away',
-                },
-            ],
-            // 为了定义id的临时变量
-            counter: 100
+const namespace = 'puzzlecards'
+
+// 获取到models里面的state
+const mapStateToProps = (state) => {
+    const cardList = state[namespace].cardList
+    return {
+        cardList
+    }
+}
+
+// action 是一个对象
+// dispatch 触发models里面的reducers 进而修改state
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClickAdd: (newCard) => {
+            const action = {
+                type: `${namespace}/addNewCard`,
+                payload: newCard
+            }
+            dispatch(action)
+
+            // dispatch({
+            //     type: `${namespace}/addNewCard`,
+            //     payload: newCard
+            // })
         }
     }
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class PuzzleCards extends Component {
 
     addNewCard = () => {
-        const { cardList, counter } = this.state
-        const card = {
-            id: counter,
-            setup: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
-            punchline: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        const { onClickAdd } = this.props
+        if (onClickAdd) {
+            const newCard = {
+                setup: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
+                punchline: 'here we use dva.',
+            }
+            onClickAdd(newCard)
         }
-
-        this.setState({
-            cardList: [...cardList, card],
-            counter: counter + 1
-        })
-
-        // this.setState(prevState => {
-        //     const prevCardList = prevState.cardList;
-        //     const card = {
-        //         id: this.state.counter,
-        //         setup: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
-        //         punchline: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        //     }
-        //     return {
-        //         cardList: prevCardList.concat(card),
-        //         counter: this.state.counter + 1
-        //     }
-        // })
     }
 
     render() {
-        const { cardList } = this.state
-
+        // dva传进来的
+        const { cardList } = this.props
         return (
             <div>
                 {

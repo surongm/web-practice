@@ -43,5 +43,21 @@ export default {
             component: 'puzzleCards/'
         }
         ]
-    }]
+    }],
+
+    // 代理
+    // proxy: {
+    //     '/dev': {
+    //         target: 'https://08ad1pao69.execute-api.us-east-1.amazonaws.com',
+    //         changeOrigin: true
+    //     }
+    // }
+    proxy: {
+        '/dev': {
+            target: 'http://jsonplaceholder.typicode.com',
+            changeOrigin: true,
+            // 请求地址忽略dev字段
+            pathRewrite: { "^/dev": "" }
+        }
+    }
 };

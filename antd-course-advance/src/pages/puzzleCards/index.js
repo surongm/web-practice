@@ -14,25 +14,39 @@ const mapStateToProps = (state) => {
 
 // action 是一个对象
 // dispatch 触发models里面的reducers 进而修改state
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onClickAdd: (newCard) => {
+//             const action = {
+//                 // type: `${namespace}/addNewCard`,
+//                 payload: newCard
+//             }
+//             dispatch(action)
+
+//             // dispatch({
+//             //     type: `${namespace}/addNewCard`,
+//             //     payload: newCard
+//             // })
+//         }
+//     }
+// }
+
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickAdd: (newCard) => {
-            const action = {
-                type: `${namespace}/addNewCard`,
-                payload: newCard
-            }
-            dispatch(action)
-
-            // dispatch({
-            //     type: `${namespace}/addNewCard`,
-            //     payload: newCard
-            // })
+        onDidMount: () => {
+            dispatch({
+                type: `${namespace}/queryInitCards`,
+            })
         }
     }
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class PuzzleCards extends Component {
+    componentDidMount() {
+        this.props.onDidMount()
+    }
 
     addNewCard = () => {
         const { onClickAdd } = this.props
@@ -48,15 +62,16 @@ export default class PuzzleCards extends Component {
     render() {
         // dva传进来的
         const { cardList } = this.props
+        // console.log(cardList)
         return (
             <div>
                 {
                     cardList.map(card => {
                         return (
                             <Card key={card.id}>
-                                <div>Q: {card.setup}</div>
+                                <div>Q: {card.title}</div>
                                 <div>
-                                    <strong>A: {card.punchline}</strong>
+                                    <strong>A: {card.body}</strong>
                                 </div>
                             </Card>
                         )

@@ -1,4 +1,5 @@
 import request from '../utils/request'
+import { message } from 'antd';
 
 const delay = (millisecond) => {
     return new Promise((resolve) => {
@@ -37,15 +38,33 @@ export default {
             // mock
             const endPointURL = '/random_joke'
 
-            const puzzle = yield call(request, endPointURL)
-            yield put({
-                type: 'addNewCard',
-                payload: puzzle
-            })
+            // const puzzle = yield call(request, endPointURL)
+            // yield put({
+            //     type: 'addNewCard',
+            //     payload: puzzle
+            // })
 
-            yield call(delay, 3000)
-            const puzzle2 = yield call(request, endPointURL)
-            yield put({ type: 'addNewCard', payload: puzzle2 })
+            // yield call(delay, 3000)
+            // const puzzle2 = yield call(request, endPointURL)
+            // yield put({ type: 'addNewCard', payload: puzzle2 })
+
+            // 模拟出错
+            // const endPointURL = '/random_joke/500'
+
+            // 加入 try catch 捕获抛错
+            try {
+                const puzzle = yield call(request, endPointURL)
+                yield put({
+                    type: 'addNewCard',
+                    payload: puzzle
+                })
+
+                yield call(delay, 3000)
+                const puzzle2 = yield call(request, endPointURL)
+                yield put({ type: 'addNewCard', payload: puzzle2 })
+            } catch (e) {
+                message.error('数据获取失败')
+            }
         }
     },
 

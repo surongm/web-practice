@@ -13,7 +13,7 @@ export default class AddOneModal extends Component {
                 dispatch({
                     type: 'cards/addOne',
                     payload: values,
-                  });
+                });
                 // 关闭弹框
                 onCancel()
             }
@@ -52,7 +52,8 @@ export default class AddOneModal extends Component {
                         {
                             getFieldDecorator('url', {
                                 rules: [{
-                                    type: 'url'
+                                    type: 'url',
+                                    message: '请输入有效的URL'
                                 }]
                             })(
                                 <Input />

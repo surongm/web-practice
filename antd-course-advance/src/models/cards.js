@@ -9,7 +9,7 @@ export default {
     },
 
     effects: {
-        *queryList({ _ }, { call, put }) {
+        * queryList({ _ }, { call, put }) {
             const rsp = yield call(cardsService.queryList);
             console.log('queryList', rsp)
             yield put({
@@ -18,20 +18,22 @@ export default {
             })
         },
 
-        *deleteOne({ payload }, { call, put }) {
+        * deleteOne({ payload }, { call, put }) {
             const rsp = yield call(cardsService.deleteOne, payload)
-            console.log('deleteOne', resp)
-            return rsp
-        },
-
-        *addOne({ payload }, { call, put }) {
-            const rsp = yield call(cardsService.addOne, payload)
-            // 增加了之后，重新查询一遍（得到最新的带有新增的数据）
+            console.log('deleteOne', rsp)
+                // 删除了重新请求一遍
             yield put({ type: 'queryList' })
             return rsp
         },
 
-        *getStatistic({ payload }, { call, put }) {
+        * addOne({ payload }, { call, put }) {
+            const rsp = yield call(cardsService.addOne, payload)
+                // 增加了之后，重新查询一遍（得到最新的带有新增的数据）
+            yield put({ type: 'queryList' })
+            return rsp
+        },
+
+        * getStatistic({ payload }, { call, put }) {
             const rsp = yield call(cardsService.getStatistic, payload)
             yield put({
                 type: 'saveStatistic',

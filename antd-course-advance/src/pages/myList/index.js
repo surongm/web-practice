@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Button, Form } from 'antd';
+import { Table, Button, Form,Popconfirm } from 'antd';
 import AddOneModal from './AddOneModal'
 import { connect } from 'dva';
 
@@ -34,6 +34,23 @@ class MyList extends Component {
             title: '链接',
             dataIndex: 'url',
             render: value => <a href={value}>{value}</a>
+        },
+        {
+            title: '操作',
+            dataIndex: 'operation',
+            // 直接删除
+            // render: (value,record) => <Button onClick={() => this.handleCLickDelete(record.id)} >删除</Button>
+        //    带询问气泡
+            render: (value,record) => (
+            <Popconfirm 
+                title="确定删除这一条数据?" 
+                onConfirm={() => this.handleCLickDelete(record.id)}
+                okText='删除'
+                cancelText='取消'
+            >
+                <Button>Delete</Button>
+            </Popconfirm>
+          )        
         }
     ]
 
@@ -56,6 +73,15 @@ class MyList extends Component {
     handleCancel = () => {
         this.setState({
             visible: false
+        })
+    }
+
+    // 点击表格内的删除按钮
+    handleCLickDelete = (id) => {
+        console.log('id',id)
+        this.props.dispatch({
+            type:'cards/deleteOne',
+            payload:id
         })
     }
 

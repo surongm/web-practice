@@ -7,7 +7,7 @@ export function queryList() {
 
 // 删除
 export function deleteOne(id) {
-    return reques(`/api/cards/${id}`, {
+    return request(`/api/cards/${id}`, {
         method: 'DELETE'
     })
 }

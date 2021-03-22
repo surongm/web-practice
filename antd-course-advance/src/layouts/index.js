@@ -70,7 +70,11 @@ export default class BasicLayout extends Component {
               }
             >
               <Item key="5">
-                <Link to="/myList">列表</Link>
+                {/* 要记得前面的/ 有表示根目录下，没有每次都会加上路由前面的菜单(父路径) */}
+                <Link to="/list/mylist">列表</Link>
+              </Item>
+              <Item key="6">
+                <Link to="/list/mylistnew">列表antd4</Link>
               </Item>
             </SubMenu>
           </Menu>

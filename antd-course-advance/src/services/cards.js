@@ -12,9 +12,9 @@ export function deleteOne(id) {
     })
 }
 
-// 增加一个
+// 增加一个 
 export function addOne(data) {
-    return request('api/cards/add', {
+    return request('/api/cards/add', {
         headers: {
             'content-type': 'application/json'
         },

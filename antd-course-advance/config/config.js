@@ -43,8 +43,19 @@ export default {
             component: 'puzzleCards'
         },
         {
-            path: '/mylist',
-            component: 'myList'
+            path: '/list',
+            // /mylistnew ——/mylistnew (/表示根目录下)
+            //  mylist——/list/mylist (没有/ 表示跟着父级)
+            routes: [
+                {
+                    path: 'mylist',
+                    component: 'myList'
+                },
+                {
+                    path: '/list/mylistnew',
+                    component: 'myList/myListNew'
+                }
+            ]
         }
         ]
     }],

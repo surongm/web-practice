@@ -26,6 +26,7 @@ export default {
 
         *addOne({ payload }, { call, put }) {
             const rsp = yield call(cardsService.addOne, payload)
+            // 增加了之后，重新查询一遍（得到最新的带有新增的数据）
             yield put({ type: 'queryList' })
             return rsp
         },

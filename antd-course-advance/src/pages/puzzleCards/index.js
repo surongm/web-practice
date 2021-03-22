@@ -6,6 +6,8 @@ const namespace = 'puzzlecards'
 
 // 获取到models里面的state
 const mapStateToProps = (state) => {
+    // 这样子也能取到cardList
+    // console.log(state.puzzlecards.cardList)
     const cardList = state[namespace].cardList
     return {
         cardList
@@ -86,3 +88,5 @@ export default class PuzzleCards extends Component {
         )
     }
 }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(PuzzleCards)

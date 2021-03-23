@@ -49,7 +49,7 @@ export default class AntdCharts extends Component {
     }
 
     refreshCharts = () => {
-        console.log(this.props.data)
+        // console.log(this.props.data)
 
         // ...一定要写在前面啊啊啊 
         this.setState({

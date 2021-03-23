@@ -57,7 +57,7 @@ export default class SampleChart extends Component {
 
     // 实现数值渲染
     refreshChart = () => {
-        console.log('data', this.props.data)
+        // console.log('data', this.props.data)
         // 接受data作为数据源
         // this.chart.source(this.props.data)
         this.chart.data(this.props.data)

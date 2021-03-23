@@ -70,6 +70,15 @@ export default {
                 }
             ]
         },
+        {
+            path: '/css',
+            routes: [
+                {
+                    path: 'hello',
+                    component: 'css/Hello'
+                },
+            ]
+        },
         ]
     }],
 

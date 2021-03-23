@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Table, Button, Form,Popconfirm } from 'antd';
+import { Table, Button, Form, Popconfirm, Modal } from 'antd';
 import AddOneModal from './AddOneModal'
+import SampleChart from "./SampleChart";
 import { connect } from 'dva';
 
 const mapStateToProps = (state) => {
@@ -8,7 +9,8 @@ const mapStateToProps = (state) => {
     // state.cards.cardsList 和 state['cards'].cardsList 一个意思
     return {
         cardsList: state.cards.cardsList,
-        cardsLoading: state.loading.effects['cards/queryList']
+        cardsLoading: state.loading.effects['cards/queryList'],
+        statistic: state.cards.statistic
     }
 }
 
@@ -16,7 +18,9 @@ class MyList extends Component {
     constructor() {
         super()
         this.state = {
-            visible: false
+            visible: false,
+            statisticVisible: false,
+            id: null
         }
     }
 
@@ -40,17 +44,26 @@ class MyList extends Component {
             dataIndex: 'operation',
             // 直接删除
             // render: (value,record) => <Button onClick={() => this.handleCLickDelete(record.id)} >删除</Button>
-        //    带询问气泡
-            render: (value,record) => (
-            <Popconfirm 
-                title="确定删除这一条数据?" 
-                onConfirm={() => this.handleCLickDelete(record.id)}
-                okText='删除'
-                cancelText='取消'
-            >
-                <Button>Delete</Button>
-            </Popconfirm>
-          )        
+            //    带询问气泡
+            render: (value, record) => (
+                <Popconfirm
+                    title="确定删除这一条数据?"
+                    onConfirm={() => this.handleCLickDelete(record.id)}
+                    okText='删除'
+                    cancelText='取消'
+                >
+                    <Button>Delete</Button>
+                </Popconfirm>
+            )
+        },
+        {
+            title: '',
+            dataIndex: '_',
+            render: (_, { id }) => {
+                return (
+                    <Button onClick={() => this.showStatistic(id)}>图表</Button>
+                )
+            }
         }
     ]
 
@@ -78,16 +91,36 @@ class MyList extends Component {
 
     // 点击表格内的删除按钮
     handleCLickDelete = (id) => {
-        console.log('id',id)
+        console.log('id', id)
         this.props.dispatch({
-            type:'cards/deleteOne',
-            payload:id
+            type: 'cards/deleteOne',
+            payload: id
+        })
+    }
+
+    // 点击图表按钮
+    showStatistic = (id) => {
+        this.props.dispatch({
+            type: 'cards/getStatistic',
+            payload: id
+        })
+
+        this.setState({
+            id,
+            statisticVisible: true
+        })
+    }
+
+    // 弹框取消
+    handleStatisticCancel = () => {
+        this.setState({
+            statisticVisible: false
         })
     }
 
     render() {
-        const { cardsList, cardsLoading, dispatch, form: { getFieldDecorator, validateFields } } = this.props
-        const { visible } = this.state
+        const { cardsList, cardsLoading, dispatch, form: { getFieldDecorator, validateFields }, statistic } = this.props
+        const { visible, statisticVisible, id } = this.state
 
         return (
             <div>
@@ -112,6 +145,15 @@ class MyList extends Component {
                         />
                         : null
                 }
+
+                {/* 图表modal */}
+                <Modal
+                    visible={statisticVisible}
+                    footer={null}
+                    onCancel={this.handleStatisticCancel}
+                >
+                    <SampleChart data={statistic[id] ? statistic[id] : []} />
+                </Modal>
             </div>
         )
     }

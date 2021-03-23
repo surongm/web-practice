@@ -23,7 +23,12 @@ export function addOne(data) {
     })
 }
 
-// 
+// 请求图表数据
 export function getStatistic(id) {
     return request(`/api/cards/${id}/statistic`)
+}
+
+// 请求图表数据
+export function getStatisticNoId() {
+    return request(`/api/cards/statisticnoid`)
 }

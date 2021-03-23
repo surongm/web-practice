@@ -56,7 +56,20 @@ export default {
                     component: 'myList/myListNew'
                 }
             ]
-        }
+        },
+        {
+            path: '/charts',
+            routes: [
+                {
+                    path: 'samplechart',
+                    component: 'charts/SampleChart'
+                },
+                {
+                    path: 'antdcharts',
+                    component: 'charts/AntdCharts'
+                }
+            ]
+        },
         ]
     }],
 

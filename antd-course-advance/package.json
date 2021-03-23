@@ -14,5 +14,9 @@
   "devDependencies": {
     "umi": "^2.0.0",
     "umi-plugin-react": "^1.15.8"
+  },
+  "dependencies": {
+    "@ant-design/charts": "^1.0.21",
+    "@antv/g2": "^4.1.13"
   }
 }

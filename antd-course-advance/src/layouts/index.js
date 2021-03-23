@@ -77,6 +77,22 @@ export default class BasicLayout extends Component {
                 <Link to="/list/mylistnew">列表antd4</Link>
               </Item>
             </SubMenu>
+            <SubMenu
+              key="sub4"
+              title={
+                <span>
+                  <Icon type="dashboard" />
+                  <span>图表页</span>
+                </span>
+              }
+            >
+              <Item key="7">
+                <Link to="/charts/samplechart">简单图表</Link>
+              </Item>
+              <Item key="8">
+                <Link to="/charts/antdcharts">Antd Charts</Link>
+              </Item>
+            </SubMenu>
           </Menu>
         </Sider>
         <Layout>

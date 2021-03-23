@@ -47,8 +47,37 @@ export default {
         })
     },
 
+    // 图表数据
     'get /api/cards/:id/statistic': (req, res, next) => {
-        res, json({
+        res.json({
+            result: [
+                {
+                    genre: 'Sports',
+                    sold: 275
+                },
+                {
+                    genre: 'Strategy',
+                    sold: 1150
+                },
+                {
+                    genre: 'Action',
+                    sold: 120
+                },
+                {
+                    genre: 'Shooter',
+                    sold: 350
+                },
+                {
+                    genre: 'Other',
+                    sold: 150
+                },
+            ]
+        })
+    },
+
+     // 图表数据
+     'get /api/cards/statisticnoid': (req, res, next) => {
+        res.json({
             result: [
                 {
                     genre: 'Sports',

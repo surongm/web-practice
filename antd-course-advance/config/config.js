@@ -87,6 +87,19 @@ export default {
                 },
             ]
         },
+        {
+            path: '/upload',
+            routes: [
+                {
+                    path: 'antd',
+                    component: 'upload'
+                },
+                {
+                    path: 'js',
+                    component: 'upload'
+                }
+            ]
+        },
         ]
     }],
 

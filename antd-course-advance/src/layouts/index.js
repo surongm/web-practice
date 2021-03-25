@@ -120,6 +120,26 @@ const menus = [
       },
     ]
   },
+  {
+    key: '6',
+    name: '上传',
+    type: 'dashboard',
+    link: '',
+    child: [
+      {
+        key: '6-0',
+        name: 'antd上传',
+        type: 'dashboard',
+        link: '/upload/antd'
+      },
+      {
+        key: '6-1',
+        name: '原始js上传',
+        type: 'dashboard',
+        link: '/upload/js'
+      }
+    ]
+  },
 ]
 
 export default class BasicLayout extends Component {

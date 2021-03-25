@@ -75,7 +75,15 @@ export default {
             routes: [
                 {
                     path: 'hello',
-                    component: 'css/Hello'
+                    component: 'css/modules/Hello'
+                },
+                {
+                    path: 'less',
+                    component: 'css/less/Hello'
+                },
+                {
+                    path: 'cover',
+                    component: 'css/cover/CoverButton'
                 },
             ]
         },
@@ -97,5 +105,12 @@ export default {
             // 请求地址忽略dev字段
             pathRewrite: { "^/dev": "" }
         }
+    },
+
+    // 更换主题
+    // 若已有配置 —— 下面这句不加也行
+    // outputPath: './bulid',
+    theme: {
+        '@primary-color': '#30b767' //绿色
     }
 };

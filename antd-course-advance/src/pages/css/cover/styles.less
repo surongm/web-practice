@@ -1,0 +1,16 @@
+// 可以直接覆盖antd的样式 
+.ant-btn {
+  border-radius: 16px;
+}
+
+// 嵌套要写在less文件中
+.override-ant-btn {
+  :global(.ant-btn) {
+    border-radius: 16px;
+  }
+}
+
+/* .css文件 */
+/* :global(.ant-btn) {
+  border-radius: 16px;
+} */

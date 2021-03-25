@@ -106,6 +106,18 @@ const menus = [
         type: 'dashboard',
         link: '/css/hello'
       },
+      {
+        key: '5-1',
+        name: 'less',
+        type: 'dashboard',
+        link: '/css/less'
+      },
+      {
+        key: '5-2',
+        name: 'cover',
+        type: 'dashboard',
+        link: '/css/cover'
+      },
     ]
   },
 ]

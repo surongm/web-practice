@@ -96,7 +96,11 @@ export default {
                 },
                 {
                     path: 'js',
-                    component: 'upload'
+                    component: 'upload/UploadJs'
+                },
+                {
+                    path: 'download',
+                    component: 'upload/MyDownload'
                 }
             ]
         },

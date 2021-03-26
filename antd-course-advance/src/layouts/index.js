@@ -122,7 +122,7 @@ const menus = [
   },
   {
     key: '6',
-    name: '上传',
+    name: '上传下载',
     type: 'dashboard',
     link: '',
     child: [
@@ -137,6 +137,12 @@ const menus = [
         name: '原始js上传',
         type: 'dashboard',
         link: '/upload/js'
+      },
+      {
+        key: '6-2',
+        name: '下载',
+        type: 'dashboard',
+        link: '/upload/download'
       }
     ]
   },

@@ -7,6 +7,19 @@ export default {
             antd: true,
             // 引入dva
             dva: true,
+            // 启用国际化
+            locale: {
+                enable: true
+            }
+            // 这个antd 全局中文不起作用
+            // locale: {
+            //     enable: true,
+            //     default: 'zh-CN',
+            //     antd: true,
+            //     title: false,
+            //     baseNavigator: true,
+            //     baseSeparator: '-',
+            // }
         }]
     ],
 
@@ -102,6 +115,36 @@ export default {
                     path: 'download',
                     component: 'upload/MyDownload'
                 }
+            ]
+        },
+        {
+            path: '/locale',
+            routes: [
+                {
+                    path: 'hello',
+                    component: 'locale/Hello'
+                },
+                {
+                    path: 'antdlocale',
+                    component: 'locale/AntdLocale'
+                },
+                {
+                    path: 'reactintl',
+                    component: 'locale/ReactIntl'
+                },
+                {
+                    path: 'umilocale',
+                    component: 'locale/UmiLocale'
+                },
+            ]
+        },
+        {
+            path: '/authority',
+            routes: [
+                {
+                    path: '/authority',
+                    component: 'authority/'
+                },
             ]
         },
         ]

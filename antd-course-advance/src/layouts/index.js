@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
 import Link from "umi/link";
+import GlobalHeader from './GlobalHeader'
 
 // Header, Footer, Sider, Content组件在Layout组件模块下
 const { Header, Footer, Sider, Content } = Layout;
@@ -143,6 +144,86 @@ const menus = [
         name: '下载',
         type: 'dashboard',
         link: '/upload/download'
+      }
+    ]
+  },
+  {
+    key: '7',
+    name: '国际化',
+    type: 'dashboard',
+    link: '',
+    child: [
+      {
+        key: '7-0',
+        name: 'Hello',
+        type: 'dashboard',
+        link: '/locale/hello'
+      },
+      {
+        key: '7-1',
+        name: 'antd国际化',
+        type: 'dashboard',
+        link: '/locale/antdlocale'
+      },
+      {
+        key: '7-2',
+        name: '组件国际化',
+        type: 'dashboard',
+        link: '/locale/reactintl'
+      },
+      {
+        key: '7-3',
+        name: 'umi国际化',
+        type: 'dashboard',
+        link: '/locale/umilocale'
+      }
+    ]
+  },
+  {
+    key: '8',
+    name: '生命周期',
+    type: 'dashboard',
+    link: '',
+    child: [
+      {
+        key: '8-0',
+        name: '装载',
+        type: 'dashboard',
+        link: '/upload/antd'
+      },
+      {
+        key: '8-1',
+        name: '更新',
+        type: 'dashboard',
+        link: '/upload/js'
+      }
+    ]
+  },
+  {
+    key: '9',
+    name: '权限',
+    type: 'dashboard',
+    link: '',
+    child: [
+      {
+        key: '9-0',
+        name: '权限',
+        type: 'dashboard',
+        link: '/authority'
+      }
+    ]
+  },
+  {
+    key: '10',
+    name: '单元测试',
+    type: 'dashboard',
+    link: '',
+    child: [
+      {
+        key: '10-0',
+        name: '单元测试',
+        type: 'dashboard',
+        link: '/upload/antd'
       }
     ]
   },
@@ -292,6 +373,7 @@ export default class BasicLayout extends Component {
             style={{ background: "#fff", textAlign: "center", padding: 0 }}
           >
             Header
+            <GlobalHeader />
           </Header>
           <Content style={{ margin: "24px 16px 0" }}>
             <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>

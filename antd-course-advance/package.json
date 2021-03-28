@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@ant-design/charts": "^1.0.21",
-    "@antv/g2": "^4.1.13"
+    "@antv/g2": "^4.1.13",
+    "react-intl": "^5.14.0"
   }
 }

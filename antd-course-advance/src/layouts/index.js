@@ -189,13 +189,13 @@ const menus = [
         key: '8-0',
         name: '装载',
         type: 'dashboard',
-        link: '/upload/antd'
+        link: '/lifecycle/LoadStage'
       },
       {
         key: '8-1',
         name: '更新',
         type: 'dashboard',
-        link: '/upload/js'
+        link: '/lifecycle/UpdateStage'
       }
     ]
   },
@@ -223,7 +223,7 @@ const menus = [
         key: '10-0',
         name: '单元测试',
         type: 'dashboard',
-        link: '/upload/antd'
+        link: 'testJest'
       }
     ]
   },

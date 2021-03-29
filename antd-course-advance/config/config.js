@@ -139,11 +139,33 @@ export default {
             ]
         },
         {
+            path: '/lifecycle',
+            routes: [
+                {
+                    path: 'loadstage',
+                    component: 'lifecycle/LoadStage'
+                },
+                {
+                    path: 'updatestage',
+                    component: 'lifecycle/UpdateStage'
+                },
+            ]
+        },
+        {
             path: '/authority',
             routes: [
                 {
                     path: '/authority',
                     component: 'authority/'
+                },
+            ]
+        },
+        {
+            path: '/testJest',
+            routes: [
+                {
+                    path: '/testJest',
+                    component: 'testJest/TestDemo'
                 },
             ]
         },
